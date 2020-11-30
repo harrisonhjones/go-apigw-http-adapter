@@ -10,6 +10,11 @@ requests/responses
 - Report Card:
   [![Go Report Card](https://goreportcard.com/badge/harrisonhjones.com/go-apigw-http-adapter)](https://goreportcard.com/report/harrisonhjones.com/go-apigw-http-adapter)
 
+## Links
+
+- [pkg.go.dev (documentation)](https://pkg.go.dev/harrisonhjones.com/go-apigw-http-adapter)
+- [Example Lambda Function](https://github.com/harrisonhjones/go-apigw-http-adapter-lambda-example)
+
 ## HTTP Adapter Lambda Example
 
 Example Lambda function that transforms the incoming request, routes it to a
