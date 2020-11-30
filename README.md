@@ -3,6 +3,13 @@
 Deserialize/serialize AWS API Gateway Lambda requests/responses to Go HTTP
 requests/responses
 
+## Badges
+
+- Build:
+  ![Build](https://github.com/harrisonhjones/go-apigw-http-adapter/workflows/Go/badge.svg)
+- Report Card:
+  [![Go Report Card](https://goreportcard.com/badge/harrisonhjones.com/go-apigw-http-adapter)](https://goreportcard.com/report/harrisonhjones.com/go-apigw-http-adapter)
+
 ## HTTP Adapter Lambda Example
 
 Example Lambda function that transforms the incoming request, routes it to a
