@@ -118,7 +118,6 @@ func TestTransformResponse_HappyPathEncoded(t *testing.T) {
 		response)
 }
 
-
 func TestTransformResponse_BadBody(t *testing.T) {
 	_, err := TransformResponse(&http.Response{
 		Body: ioutil.NopCloser(&FailingReader{}),
