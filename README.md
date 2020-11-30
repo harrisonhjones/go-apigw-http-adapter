@@ -10,6 +10,10 @@ responses.
 - Report Card:
   [![Go Report Card](https://goreportcard.com/badge/harrisonhjones.com/go-apigw-http-adapter)](https://goreportcard.com/report/harrisonhjones.com/go-apigw-http-adapter)
 
+## Releases
+
+- 0.x - Current - Under review / development. Candidate for 1.x.
+
 ## Links
 
 - [pkg.go.dev (documentation)](https://pkg.go.dev/harrisonhjones.com/go-apigw-http-adapter)
@@ -21,8 +25,9 @@ responses.
 
 ## Goals
 
-1. Maintain the [Go compatibility promise](https://golang.org/doc/go1compat) as
-   much as possible.
+1. _Once version 1 has released_: maintain the
+   [Go compatibility promise](https://golang.org/doc/go1compat) as much as
+   possible.
 1. As few dependencies as possible.
    1. Looking at you
       [awslabs/aws-lambda-go-api-proxy](https://github.com/awslabs/aws-lambda-go-api-proxy).
