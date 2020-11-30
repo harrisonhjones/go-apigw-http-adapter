@@ -34,6 +34,14 @@ responses.
    1. Currently only a single direct dependency on `github.com/stretchr/testify`
       for testing.
 
+## Contributing
+
+1. Make changes.
+1. Add / update tests.
+1. Run `make` to fmt, vet, test, and build your changes.
+1. Commit your changes.
+1. Submit a PR.
+
 ## HTTP Adapter Lambda Example
 
 Example Lambda function that transforms the incoming request, routes it to a
