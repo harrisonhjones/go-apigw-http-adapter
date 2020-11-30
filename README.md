@@ -19,6 +19,16 @@ requests/responses
 
 1. Only handles HTTP APIs. REST APIs are not yet supported (PRs welcome!).
 
+## Goals
+
+1. Maintain the [Go compatibility promise](https://golang.org/doc/go1compat) as
+   much as possible.
+1. As few dependencies as possible.
+   1. Looking at you
+      [awslabs/aws-lambda-go-api-proxy](https://github.com/awslabs/aws-lambda-go-api-proxy).
+   1. Currently only a single direct dependency on `github.com/stretchr/testify`
+      for testing.
+
 ## HTTP Adapter Lambda Example
 
 Example Lambda function that transforms the incoming request, routes it to a
