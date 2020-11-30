@@ -15,10 +15,16 @@ requests/responses
 - [pkg.go.dev (documentation)](https://pkg.go.dev/harrisonhjones.com/go-apigw-http-adapter)
 - [Example Lambda Function](https://github.com/harrisonhjones/go-apigw-http-adapter-lambda-example)
 
+## Limitations
+
+1. Only handles HTTP APIs. REST APIs are not yet supported (PRs welcome!).
+
 ## HTTP Adapter Lambda Example
 
 Example Lambda function that transforms the incoming request, routes it to a
-http.ServerMux, and then returns the transformed result.
+http.ServerMux, and then returns the transformed result. See
+[Example Lambda Function](https://github.com/harrisonhjones/go-apigw-http-adapter-lambda-example)
+for a working example.
 
 ```go
 package main
