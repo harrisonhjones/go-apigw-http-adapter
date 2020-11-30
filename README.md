@@ -1,7 +1,7 @@
 # go-apigw-http-adapter
 
-Deserialize/serialize AWS API Gateway Lambda requests/responses to Go HTTP
-requests/responses
+Transform AWS API Gateway Lambda requests and responses to Go HTTP requests and
+responses.
 
 ## Badges
 
