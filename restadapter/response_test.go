@@ -31,9 +31,9 @@ func TestTransformResponse_HappyPathNotEncoded(t *testing.T) {
 		&Response{
 			StatusCode: 201,
 			MultiValueHeaders: map[string][]string{
-				"Key1": {"val1", "val2"},
-				"Key2": {"val2"},
-				"Set-Cookie":{"cookie1-name=cookie1-value", "cookie2-name=cookie2-value"},
+				"Key1":       {"val1", "val2"},
+				"Key2":       {"val2"},
+				"Set-Cookie": {"cookie1-name=cookie1-value", "cookie2-name=cookie2-value"},
 			},
 			Body:            "Hello World!",
 			IsBase64Encoded: false,
@@ -65,9 +65,9 @@ func TestTransformResponse_HappyPathNotEncodedWithEncRes(t *testing.T) {
 		&Response{
 			StatusCode: 201,
 			MultiValueHeaders: map[string][]string{
-				"Key1": {"val1", "val2"},
-				"Key2": {"val2"},
-				"Set-Cookie":{"cookie1-name=cookie1-value", "cookie2-name=cookie2-value"},
+				"Key1":       {"val1", "val2"},
+				"Key2":       {"val2"},
+				"Set-Cookie": {"cookie1-name=cookie1-value", "cookie2-name=cookie2-value"},
 			},
 			Body:            "Hello World!",
 			IsBase64Encoded: false,
@@ -99,9 +99,9 @@ func TestTransformResponse_HappyPathEncoded(t *testing.T) {
 		&Response{
 			StatusCode: 201,
 			MultiValueHeaders: map[string][]string{
-				"Key1": {"val1", "val2"},
-				"Key2": {"val2"},
-				"Set-Cookie":{"cookie1-name=cookie1-value", "cookie2-name=cookie2-value"},
+				"Key1":       {"val1", "val2"},
+				"Key2":       {"val2"},
+				"Set-Cookie": {"cookie1-name=cookie1-value", "cookie2-name=cookie2-value"},
 			},
 			Body:            "SGVsbG8gRW5jb2RlZCBXb3JsZCE=",
 			IsBase64Encoded: true,

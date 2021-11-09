@@ -67,7 +67,13 @@ func TransformRequest(ctx context.Context, req Request) (*http.Request, error) {
 
 	hReq = hReq.WithContext(ctx)
 
-	hReq.Header = req.MultiValueHeaders
+	// Q: Why not just `hReq.Header = req.MultiValueHeaders` here?
+	// A: `Header.Add` canonicalizes the header key.
+	for k, vals := range req.MultiValueHeaders {
+		for _, val := range vals {
+			hReq.Header.Add(k, val)
+		}
+	}
 
 	return hReq, nil
 }
