@@ -14,9 +14,10 @@ func TestTransformRequest_HappyPath(t *testing.T) {
 		Path:       "/my/path",
 		HTTPMethod: "POST",
 		MultiValueHeaders: map[string][]string{
-			"Header1": {"value1"},
-			"Header2": {"value1", "value2"},
-			"Cookie":  {"cookie1=val1; cookie2=val2"},
+			"Header1":      {"value1"},
+			"Header2":      {"value1", "value2"},
+			"header-three": {"value1"}, // Non-canonical key.
+			"Cookie":       {"cookie1=val1; cookie2=val2"},
 		},
 		MultiValueQueryStringParameters: map[string][]string{
 			"parameter1": {"value1", "value2"},
@@ -43,9 +44,10 @@ func TestTransformRequest_HappyPath(t *testing.T) {
 
 		assert.Equal(t,
 			http.Header{
-				"Cookie":  []string{"cookie1=val1; cookie2=val2"},
-				"Header1": []string{"value1"},
-				"Header2": []string{"value1", "value2"},
+				"Cookie":       []string{"cookie1=val1; cookie2=val2"},
+				"Header-Three": []string{"value1"},
+				"Header1":      []string{"value1"},
+				"Header2":      []string{"value1", "value2"},
 			},
 			httpReq.Header)
 

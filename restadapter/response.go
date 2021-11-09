@@ -20,8 +20,8 @@ type Response struct {
 // TransformResponse transforms an http.Response to a Response.
 func TransformResponse(res *http.Response, encRes func(*http.Response) bool) (*Response, error) {
 	apigwRes := &Response{
-		StatusCode: res.StatusCode,
-		MultiValueHeaders:    map[string][]string{},
+		StatusCode:        res.StatusCode,
+		MultiValueHeaders: map[string][]string{},
 	}
 
 	body, err := ioutil.ReadAll(res.Body)
