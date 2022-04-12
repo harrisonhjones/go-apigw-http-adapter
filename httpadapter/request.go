@@ -17,23 +17,31 @@ type Request struct {
 	RawQueryString  string            `json:"rawQueryString"`
 	Cookies         []string          `json:"cookies,omitempty"`
 	Headers         map[string]string `json:"headers"`
-	RequestContext  requestContext    `json:"requestContext"`
+	RequestContext  RequestContext    `json:"requestContext"`
 	Body            string            `json:"body,omitempty"`
 	IsBase64Encoded bool              `json:"isBase64Encoded"`
 }
 
-type requestContext struct {
+// RequestContext contains all relevant data needed for Request transformation.
+type RequestContext struct {
 	DomainName string             `json:"domainName"`
-	HTTP       requestContextHTTP `json:"http"`
+	HTTP       RequestContextHTTP `json:"http"`
 }
 
-type requestContextHTTP struct {
+// RequestContextHTTP contains all relevant data needed for Request transformation.
+type RequestContextHTTP struct {
 	Method string `json:"method"`
 	Path   string `json:"path"`
 }
 
-// TransformRequest transforms a Request to an http.Request.
-func TransformRequest(ctx context.Context, req Request) (*http.Request, error) {
+// TransformRequest transforms a *Request to a *http.Request.
+// A non-nil error will be returned if the *Request is nil or if the transformation fails.
+// The *Request will not be mutated during transformation.
+func TransformRequest(ctx context.Context, req *Request) (*http.Request, error) {
+	if req == nil {
+		return nil, fmt.Errorf("req cannot be nil")
+	}
+
 	if req.Version != "2.0" {
 		return nil, fmt.Errorf("unsupported version %q", req.Version)
 	}
