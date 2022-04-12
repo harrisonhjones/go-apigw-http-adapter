@@ -40,7 +40,7 @@ func TestTransformRequest_HappyPath(t *testing.T) {
 		req.Body = "Hello World!"
 		req.IsBase64Encoded = false
 
-		httpReq, err := TransformRequest(tstCtx, req)
+		httpReq, err := TransformRequest(tstCtx, &req)
 
 		if !assert.NoError(t, err, "failed to transform request") {
 			return
@@ -87,7 +87,7 @@ func TestTransformRequest_HappyPath(t *testing.T) {
 		req.Body = "SGVsbG8gRW5jb2RlZCBXb3JsZCE=" // FYI: base64.StdEncoding.EncodeToString([]byte("Hello Encoded World!"))
 		req.IsBase64Encoded = true
 
-		httpReq, err := TransformRequest(tstCtx, req)
+		httpReq, err := TransformRequest(tstCtx, &req)
 
 		if !assert.NoError(t, err, "failed to transform request") {
 			return
@@ -105,7 +105,7 @@ func TestTransformRequest_HappyPath(t *testing.T) {
 		req.Body = "blarg"
 		req.IsBase64Encoded = true
 
-		_, err := TransformRequest(tstCtx, req)
+		_, err := TransformRequest(tstCtx, &req)
 
 		assert.EqualError(t, err, "failed to decode body: illegal base64 data at input byte 4")
 	})
@@ -113,7 +113,7 @@ func TestTransformRequest_HappyPath(t *testing.T) {
 	t.Run("NotHTTPRequest", func(t *testing.T) {
 		req.Version = "blarg"
 
-		_, err := TransformRequest(tstCtx, req)
+		_, err := TransformRequest(tstCtx, &req)
 
 		assert.EqualError(t, err, "unsupported version \"blarg\"")
 	})

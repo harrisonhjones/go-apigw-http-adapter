@@ -31,8 +31,13 @@ type RequestContext struct {
 	DomainName string `json:"domainName"`
 }
 
-// TransformRequest transforms a Request to an http.Request.
-func TransformRequest(ctx context.Context, req Request) (*http.Request, error) {
+// TransformRequest transforms a *Request to a *http.Request.
+// A non-nil error will be returned if the *Request is nil or if the transformation fails.
+// The *Request will not be mutated during transformation.
+func TransformRequest(ctx context.Context, req *Request) (*http.Request, error) {
+	if req == nil {
+		return nil, fmt.Errorf("req cannot be nil")
+	}
 	// Mirror how http.Request bodies normally behave.
 	// From the docs:
 	// For server requests, the Request Body is always non-nil

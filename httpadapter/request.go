@@ -34,8 +34,14 @@ type RequestContextHTTP struct {
 	Path   string `json:"path"`
 }
 
-// TransformRequest transforms a Request to an http.Request.
-func TransformRequest(ctx context.Context, req Request) (*http.Request, error) {
+// TransformRequest transforms a *Request to a *http.Request.
+// A non-nil error will be returned if the *Request is nil or if the transformation fails.
+// The *Request will not be mutated during transformation.
+func TransformRequest(ctx context.Context, req *Request) (*http.Request, error) {
+	if req == nil {
+		return nil, fmt.Errorf("req cannot be nil")
+	}
+
 	if req.Version != "2.0" {
 		return nil, fmt.Errorf("unsupported version %q", req.Version)
 	}
