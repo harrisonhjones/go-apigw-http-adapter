@@ -21,7 +21,9 @@ func TestTransformRequest_HappyPath(t *testing.T) {
 		Headers: map[string]string{
 			"Header1":      "value1",
 			"Header2":      "value1,value2",
-			"header-three": "value1", // Non-canonical key.
+			"header-three": "value1,value2", // Non-canonical key.
+			"Header-three": "value3",        // Non-canonical key.
+			"Header-Three": "value4",        // Canonical key.
 		},
 		RequestContext: RequestContext{
 			DomainName: "example.com",
@@ -49,7 +51,7 @@ func TestTransformRequest_HappyPath(t *testing.T) {
 		assert.Equal(t,
 			http.Header{
 				"Cookie":       []string{"cookie1=val1; cookie2=val2"},
-				"Header-Three": []string{"value1"},
+				"Header-Three": []string{"value1", "value2", "value3", "value4"},
 				"Header1":      []string{"value1"},
 				"Header2":      []string{"value1", "value2"},
 			},
