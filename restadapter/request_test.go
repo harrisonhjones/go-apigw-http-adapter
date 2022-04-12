@@ -23,7 +23,7 @@ func TestTransformRequest_HappyPath(t *testing.T) {
 			"parameter1": {"value1", "value2"},
 			"parameter2": {"value"},
 		},
-		RequestContext: requestContext{
+		RequestContext: RequestContext{
 			DomainName: "example.com",
 		},
 	}

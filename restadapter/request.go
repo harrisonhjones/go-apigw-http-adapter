@@ -21,12 +21,13 @@ type Request struct {
 	HTTPMethod                      string              `json:"httpMethod"`
 	MultiValueHeaders               map[string][]string `json:"multiValueHeaders"`
 	MultiValueQueryStringParameters map[string][]string `json:"multiValueQueryStringParameters"`
-	RequestContext                  requestContext      `json:"requestContext"`
+	RequestContext                  RequestContext      `json:"requestContext"`
 	Body                            string              `json:"body"`
 	IsBase64Encoded                 bool                `json:"isBase64Encoded,omitempty"`
 }
 
-type requestContext struct {
+// RequestContext contains all relevant data needed for Request transformation.
+type RequestContext struct {
 	DomainName string `json:"domainName"`
 }
 

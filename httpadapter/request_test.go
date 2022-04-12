@@ -23,9 +23,9 @@ func TestTransformRequest_HappyPath(t *testing.T) {
 			"Header2":      "value1,value2",
 			"header-three": "value1", // Non-canonical key.
 		},
-		RequestContext: requestContext{
+		RequestContext: RequestContext{
 			DomainName: "example.com",
-			HTTP: requestContextHTTP{
+			HTTP: RequestContextHTTP{
 				Method: "POST",
 				Path:   "/my/path",
 			},

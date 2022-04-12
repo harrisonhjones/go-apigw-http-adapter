@@ -17,17 +17,19 @@ type Request struct {
 	RawQueryString  string            `json:"rawQueryString"`
 	Cookies         []string          `json:"cookies,omitempty"`
 	Headers         map[string]string `json:"headers"`
-	RequestContext  requestContext    `json:"requestContext"`
+	RequestContext  RequestContext    `json:"requestContext"`
 	Body            string            `json:"body,omitempty"`
 	IsBase64Encoded bool              `json:"isBase64Encoded"`
 }
 
-type requestContext struct {
+// RequestContext contains all relevant data needed for Request transformation.
+type RequestContext struct {
 	DomainName string             `json:"domainName"`
-	HTTP       requestContextHTTP `json:"http"`
+	HTTP       RequestContextHTTP `json:"http"`
 }
 
-type requestContextHTTP struct {
+// RequestContextHTTP contains all relevant data needed for Request transformation.
+type RequestContextHTTP struct {
 	Method string `json:"method"`
 	Path   string `json:"path"`
 }
